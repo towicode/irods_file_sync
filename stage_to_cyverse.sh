@@ -76,6 +76,7 @@ fi
 # attempt a file transfer
 echo `/bin/date`" attempting transfer of $1 to $2" >>$LOG
 `$IPUT -f -V $1 $2` >>$LOG 2>&1
+echo $?
 if [ $? != 0 ]; then
 
 	# at this point failure	
@@ -89,6 +90,7 @@ if [ $? != 0 ]; then
     /bin/mkdir -p ${full_path} >>$LOG 2>&1
 
     # copy file
+    echo here?
 	echo `/bin/date`" full path to file is ${full_path}, attempting copy" >>$LOG
     /bin/mv $1 ${full_path} >>$LOG 2>&1
 fi
