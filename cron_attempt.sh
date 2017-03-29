@@ -57,6 +57,10 @@ LOG=${LOG_LOCATION}/$0-${tmp_d}.log
 /bin/mkdir -p $DONE_LOCATION >>$LOG 2>&1
 
 
+# there is a weird bug with bash where if the directory is 
+# empty it still returns a non existant path in the loop below
+# this check just efficently checks to see if there is 
+# any existing folder in /staging
 target=$TMP_LOCATION
 if $FIND "$target" -mindepth 1 -print -quit | grep -q .; then
     :
